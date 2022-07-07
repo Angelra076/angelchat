@@ -1,0 +1,23 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="https://cdn-icons-png.flaticon.com/512/1485/1485287.png" width="30" height="30"
+            class="d-inline-block align-top" alt="">
+        ChatOnline
+    </a>
+
+    <div ngbDropdown class="d-inline-block" *ngIf="userLogged|async as user; else btnIngresar">
+        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            <img style="border-radius: 100%;" *ngIf="user.photoURL" src="{{user.photoURL}}" width="30" height="30"
+                class="d-inline-block align-top" alt="">
+            {{user.displayName?user.displayName : user.email}}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="logout()">Salir - 1</button>
+        </div>
+    </div>
+
+        <ng-template #btnIngresar>
+            <button class="btn btn-outline-primary" routerLink="/login">Ingresar</button>
+        </ng-template>
+
+</nav>

@@ -1,0 +1,29 @@
+<div *ngIf="usuarioLogeado && !mostrarChat" class="chatIconContainer" (click)="mostrarChat=true">
+    <img src="https://solventgreen.com/wp-content/uploads/2020/04/chat-icon.png" class="chatIcon" alt="chat Icon">
+</div>
+
+<div class="card text-center cardContainer" *ngIf="usuarioLogeado && mostrarChat">
+    <div class="card-header">
+        Chat
+        <div class="closeIcon" (click)="mostrarChat=false">X</div>
+    </div>
+    <div class="card-body">
+        <div id="contenedorDeMensajes" class="contenedorDeMensajes h-100">
+            <p *ngFor="let mensaje of mensajes" class="msj p-2"
+                [ngClass]="(usuarioLogeado.uid==mensaje.emisor)? 'enviado' : 'recibido'">
+                {{mensaje.texto}}
+            </p>
+        </div>
+    </div>
+
+    <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
+        <input type="text" class="form-control" placeholder="Ingresa un mensaje" [(ngModel)]="nuevoMensaje"
+            [ngModelOptions]="{standalone: true}">
+        <div class="input-group-append" (click)="enviarMensaje()">
+            <span class="input-group-text" id="basic-addon2">
+                <img class="imgEnviar" src="https://freeiconshop.com/wp-content/uploads/edd/paper-rocket-flat.png"
+                    width="25px" alt="Enviar Mensaje">
+            </span>
+        </div>
+    </form>
+</div>
