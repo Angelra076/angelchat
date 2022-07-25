@@ -7,46 +7,46 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  mostrarChat = false;
-  usuarioLogeado: any;
-  nuevoMensaje: string = "";
-  mensajes: any = [
+  showChat = true;
+  userLogged: any;
+  newMessage: string = "";
+  messages: any = [
     {
-      emisor: "1odysoXd0AgQH3z2OlbYGXh2qAh2",
-      texto: "Hola todo bien"
+      transmitter: "id",
+      text: "Hello"
     },
     {
-      emisor: "id",
-      texto: "Todo correcto"
+      transmitter: "id",
+      text: "Hi"
     },
     {
-      emisor: "1odysoXd0AgQH3z2OlbYGXh2qAh2",
-      texto: "Y yo que me alegro"
+      transmitter: "1odysoXd0AgQH3z2OlbYGXh2qAh2",
+      text: "dxdasd"
     },
     {
-      emisor: "id",
-      texto: "XDDDD"
+      transmitter: "id",
+      text: "XDDDD"
     }
   ];
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.getUserLogged().subscribe(usuario => {
-      this.usuarioLogeado = usuario;
+    this.authService.getUserLogged().subscribe(user => {
+      this.userLogged = user;
     });
   }
 
-  enviarMensaje() {
+  sendMessage() {
 
-    if (this.nuevoMensaje == "") return;
+    if (this.newMessage == "") return;
 
-    console.log(this.nuevoMensaje);
-    let mensaje = {
-      emisor: this.usuarioLogeado.uid,
-      texto: this.nuevoMensaje
+    console.log(this.newMessage);
+    let message = {
+      transmitter: this.userLogged.uid,
+      text: this.newMessage
     }
-    this.mensajes.push(mensaje);
-    this.nuevoMensaje = "";
+    this.messages.push(message);
+    this.newMessage = "";
 
     setTimeout(() => {
       this.scrollToTheLastElementByClassName();
@@ -55,10 +55,10 @@ export class ChatComponent implements OnInit {
 
   scrollToTheLastElementByClassName() {
     let elements = document.getElementsByClassName('msj');
-    let ultimo: any = elements[(elements.length - 1)];
-    let toppos = ultimo.offsetTop;
+    let last: any = elements[(elements.length - 1)];
+    let toppos = last.offsetTop;
 
     //@ts-ignore
-    document.getElementById('contenedorDeMensajes')?.scrollTop = toppos;
+    document.getElementById('messageContainer')?.scrollTop = toppos;
   }
 }

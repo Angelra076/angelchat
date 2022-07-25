@@ -18,12 +18,12 @@
     background-image: url(https://media.istockphoto.com/vectors/seamless-pattern-with-social-media-elements-vector-id1216688115?k=20&m=1216688115&s=612x612&w=0&h=3sseE8vq-XIPRsv55mVU3kq4Rv1T5hhBWxQ0UogyG0w=);
 }
 
-.imgEnviar:active{
+.imgSend:active{
     transform: scale(0.9);
 
 }
 
-.enviado{
+.send{
 display: block;
 float: right;
 background-color: rgb(0, 132, 255);
@@ -33,7 +33,7 @@ border-radius: 10px;
 text-align: left;
 }
 
-.recibido{
+.received{
     display: block;
     float: left;
     background-color: rgb(102, 102, 102);
@@ -43,11 +43,11 @@ text-align: left;
     text-align: left;
 }
 
-.contenedorDeMensajes{
+.messageContainer{
     overflow: scroll;
     padding: 0.3rem;
 }
-.contenedorDeMensajes::-webkit-scrollbar{
+.messageContainer::-webkit-scrollbar{
     display: none;
 }
 

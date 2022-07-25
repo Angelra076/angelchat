@@ -6,14 +6,14 @@
       <div class="card-body p-4">
   
         <label style="float: left" for="">Email</label>
-        <input class="form-control m-2" type="email" placeholder="ingrese su email" [(ngModel)]="usuario.email">
+        <input class="form-control m-2" type="email" placeholder="Write your Email" [(ngModel)]="user.email">
   
         <label style="float: left" for="">Password</label>
-        <input class="form-control m-2" type="password" placeholder="ingrese su password" [(ngModel)]="usuario.password">
+        <input class="form-control m-2" type="password" placeholder="Write your Password" [(ngModel)]="user.password">
   
-        <button class="btn btn-primary btn-block m-2" (click)="Ingresar()">Ingresar</button>
-        <button class="btn btn-info btn-block m-2" (click)="IngresarConGoogle()">Ingresar con google</button>
-        <label>Aun no tienes cuenta?<a routerLink="/register">Registrarse</a></label>
+        <button class="btn btn-primary btn-block m-2" (click)="Enter()">Log</button>
+        <button class="btn btn-info btn-block m-2" (click)="EnterWithGoogle()">Enter with Google</button>
+        <label>You don't have an account yet?<a routerLink="/register">Sign in</a></label>
   
       </div>
   

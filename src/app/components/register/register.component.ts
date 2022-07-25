@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -7,19 +8,20 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  usuario = {
+  user = {
     email: '',
     password: ''
   }
 
-  constructor(private authService: AuthService){
+  constructor(private authService: AuthService, private toastrSvc:ToastrService){
 
   }
 
-  registrarse(){
-    const {email,password}=this.usuario;
+  register(){
+    const {email,password}=this.user;
     this.authService.register(email,password).then(res => {
-      console.log("se registro: ",res)
+      console.log("was registered: ",res),
+      this.toastrSvc.success('Register Complete')
     })
 
   }

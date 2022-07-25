@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 
 
-  usuario = {
+  user = {
     email: '',
     password: ''
   }
@@ -18,23 +18,21 @@ export class LoginComponent implements OnInit {
 
   }
 
-  Ingresar(){
-    const {email,password}=this.usuario;
-    this.authService.login(email,password).then(res => {
-      console.log("se registro: ",res)
-    })
+  Enter(){
+    const {email,password}=this.user;
+    this.authService.login(email,password)
 
   }
 
-  IngresarConGoogle(){
-    console.log(this.usuario);
-    const {email,password}=this.usuario;
+  EnterWithGoogle(){
+    console.log(this.user);
+    const {email,password}=this.user;
     this.authService.loginWithGoogle(email,password).then(res => {
-      console.log("se registro: ",res)
+      console.log("was registered: ",res)
     })
   }
 
-  logout(){
+  logout(): void{
     this.authService.logout();
   }
 
